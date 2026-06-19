@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1000, initial-scale=1.0" />
+  <title>Katalog Produk — Sumber Jaya</title>
+  <style>
+    :root {
+      --color-bg: #FFFFFF;
+      --color-red: #CC0000;
+      --color-red-hover: #AA0000;
+      --color-blue-link: #0066CC;
+      --color-nav-bg: #F2F2F2;
+      --color-border: #CCCCCC;
+      --color-text-body: #333333;
+      --color-text-dark: #000000;
+      --color-text-small: #666666;
+      --color-accent-yellow: #FFD900;
+      --color-accent-orange: #FF6600;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--color-bg);
+      color: var(--color-text-body);
+      font-family: Arial, "Helvetica Neue", sans-serif;
+      font-size: 11px;
+      line-height: 1.4;
+      overflow-x: auto;
+    }
+
+    a {
+      color: var(--color-blue-link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--color-red);
+      text-decoration: underline;
+    }
+
+    button,
+    input,
+    select {
+      font-family: Arial, "Helvetica Neue", sans-serif;
+      font-size: 12px;
+      border-radius: 0;
+    }
+
+    button {
+      border: 1px solid #999999;
+      background: #FFFFFF;
+      color: #333333;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+
+    button:active {
+      background: var(--color-red-hover);
+      color: #FFFFFF;
+    }
+
+    button.primary {
+      background: var(--color-red);
+      border: 1px solid var(--color-red);
+      color: #FFFFFF;
+      font-weight: bold;
+    }
+
+    button.primary:active {
+      background: var(--color-red-hover);
+    }
+
+    .page {
+      width: 1000px;
+      margin: 0 auto;
+      background: #FFFFFF;
+    }
+
+    .utility-bar {
+      height: 22px;
+      border-bottom: 1px solid var(--color-border);
+      padding: 4px 6px;
+      text-align: right;
+      font-size: 10px;
+      color: var(--color-text-small);
+    }
+
+    .utility-bar a {
+      font-size: 10px;
+      margin-left: 8px;
+    }
+
+    .search-header {
+      display: grid;
+      grid-template-columns: 170px 1fr 64px 124px 190px;
+      column-gap: 4px;
+      border-bottom: 1px solid var(--color-border);
+      padding: 6px;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      line-height: 1;
+      font-weight: bold;
+      color: var(--color-red);
+    }
+
+    .logo small {
+      display: block;
+      font-size: 10px;
+      color: var(--color-text-small);
+      font-weight: normal;
+      margin-top: 3px;
+    }
+
+    .top-search {
+      width: 100%;
+      height: 26px;
+      border: 1px solid var(--color-red);
+      padding-left: 6px;
+      color: #333333;
+    }
+
+    .header-ad {
+      border: 1px solid var(--color-border);
+      height: 48px;
+      padding: 4px 6px;
+      background: #FFF8E0;
+      overflow: hidden;
+    }
+
+    .header-ad strong {
+      display: block;
+      color: var(--color-red);
+      font-size: 12px;
+    }
+
+    .nav-row {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-nav-bg);
+      padding: 4px 6px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .nav-row a {
+      margin-right: 16px;
+    }
+
+    .hot-keywords {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      background: #FFF8E0;
+      min-height: 24px;
+    }
+
+    .hot-keywords .label {
+      background: var(--color-red);
+      color: #FFFFFF;
+      font-weight: bold;
+      padding: 4px 6px;
+      font-size: 12px;
+    }
+
+    .hot-keywords .links {
+      padding: 4px 6px;
+      font-size: 12px;
+    }
+
+    .ticker-row {
+      border-bottom: 1px solid var(--color-border);
+      padding: 4px 6px;
+      font-size: 11px;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 200px 560px 220px;
+      column-gap: 10px;
+      padding: 6px 0;
+    }
+
+    .left-col,
+    .center-col,
+    .right-col {
+      min-width: 0;
+    }
+
+    .section {
+      border: 1px solid var(--color-border);
+      margin-bottom: 6px;
+      background: #FFFFFF;
+    }
+
+    .section-title {
+      background: var(--color-red);
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 4px 6px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .section-body {
+      padding: 5px 6px;
+    }
+
+    .category-cell {
+      border: 1px solid var(--color-border);
+      border-top: 0;
+      padding: 5px 6px;
+      background: #FFFFFF;
+    }
+
+    .category-cell:first-child {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .cat-head {
+      font-size: 13px;
+      font-weight: bold;
+      color: #333333;
+      margin-bottom: 3px;
+    }
+
+    .cat-head .icon {
+      display: inline-block;
+      width: 20px;
+      margin-right: 4px;
+      text-align: center;
+    }
+
+    .cat-links a {
+      display: block;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .catalog-hero {
+      border: 1px solid var(--color-border);
+      background: var(--color-accent-yellow);
+      min-height: 130px;
+      padding: 8px;
+      margin-bottom: 6px;
+    }
+
+    .catalog-hero h1 {
+      margin: 0 0 4px;
+      font-size: 24px;
+      line-height: 1.1;
+      color: var(--color-red);
+    }
+
+    .catalog-hero p {
+      margin: 0 0 6px;
+      font-size: 12px;
+      color: #333333;
+    }
+
+    .hero-search-row {
+      display: grid;
+      grid-template-columns: 1fr 80px 100px;
+      column-gap: 4px;
+      margin-top: 6px;
+    }
+
+    .hero-search-row input {
+      height: 26px;
+      border: 1px solid var(--color-red);
+      padding-left: 6px;
+    }
+
+    .small-note {
+      font-size: 10px;
+      color: var(--color-text-small);
+      margin-top: 4px;
+    }
+
+    .shortcut-grid {
+      display: grid;
+      grid-template-columns: 186px 186px 186px;
+      margin-bottom: 6px;
+    }
+
+    .shortcut {
+      border: 1px solid var(--color-border);
+      border-right: 0;
+      padding: 5px 6px;
+      min-height: 72px;
+      background: #FFFFFF;
+    }
+
+    .shortcut:nth-child(3n) {
+      border-right: 1px solid var(--color-border);
+    }
+
+    .shortcut strong {
+      display: block;
+      font-size: 13px;
+      color: #333333;
+      margin-bottom: 2px;
+    }
+
+    .shortcut span {
+      color: var(--color-text-small);
+      font-size: 11px;
+    }
+
+    .filter-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .filter-table th,
+    .filter-table td {
+      border: 1px solid var(--color-border);
+      padding: 4px 6px;
+      vertical-align: top;
+    }
+
+    .filter-table th {
+      width: 90px;
+      background: var(--color-nav-bg);
+      text-align: left;
+      font-size: 12px;
+    }
+
+    .filter-btn {
+      margin: 0 3px 3px 0;
+      padding: 3px 7px;
+      font-size: 11px;
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+    }
+
+    .filter-btn.active {
+      background: var(--color-red);
+      color: #FFFFFF;
+      border: 1px solid var(--color-red);
+      font-weight: bold;
+    }
+
+    .sort-row {
+      margin-top: 4px;
+    }
+
+    .sort-row select {
+      height: 24px;
+      border: 1px solid var(--color-border);
+      background: #FFFFFF;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: 280px 280px;
+    }
+
+    .product-card {
+      border: 1px solid var(--color-border);
+      border-top: 0;
+      padding: 5px 6px;
+      min-height: 150px;
+      background: #FFFFFF;
+    }
+
+    .product-card:nth-child(1),
+    .product-card:nth-child(2) {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .product-inner {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      column-gap: 6px;
+    }
+
+    .product-img {
+      width: 86px;
+      height: 70px;
+      border: 1px solid var(--color-border);
+      object-fit: contain;
+      background: #FFFFFF;
+    }
+
+    .product-title {
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.25;
+    }
+
+    .price {
+      color: var(--color-red);
+      font-family: Arial, "Courier New", monospace;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .meta {
+      color: var(--color-text-small);
+      font-size: 10px;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 2px;
+      border: 1px solid var(--color-border);
+      padding: 1px 4px;
+      font-size: 10px;
+      background: #FFF8E0;
+      color: #333333;
+    }
+
+    .card-actions {
+      margin-top: 5px;
+    }
+
+    .card-actions button {
+      font-size: 11px;
+      padding: 3px 6px;
+      margin-right: 3px;
+      margin-bottom: 3px;
+    }
+
+    .detail-layout {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      column-gap: 8px;
+    }
+
+    .detail-main-img {
+      width: 170px;
+      height: 120px;
+      object-fit: contain;
+      border: 1px solid var(--color-border);
+      background: #FFFFFF;
+    }
+
+    .thumb-row img {
+      width: 50px;
+      height: 38px;
+      object-fit: contain;
+      border: 1px solid var(--color-border);
+      margin-right: 3px;
+      margin-top: 3px;
+      cursor: pointer;
+    }
+
+    .spec-table,
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 5px;
+    }
+
+    .spec-table th,
+    .spec-table td,
+    .compare-table th,
+    .compare-table td {
+      border: 1px solid var(--color-border);
+      padding: 4px 6px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .spec-table th,
+    .compare-table th {
+      background: var(--color-nav-bg);
+      font-weight: bold;
+      width: 105px;
+    }
+
+    .recommend-grid,
+    .promo-grid {
+      display: grid;
+      grid-template-columns: 186px 186px 186px;
+    }
+
+    .recommend-card,
+    .promo-card {
+      border: 1px solid var(--color-border);
+      border-right: 0;
+      padding: 5px 6px;
+      min-height: 84px;
+      background: #FFFFFF;
+    }
+
+    .recommend-card:nth-child(3n),
+    .promo-card:nth-child(3n) {
+      border-right: 1px solid var(--color-border);
+    }
+
+    .recommend-card strong,
+    .promo-card strong {
+      display: block;
+      color: #333333;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .label {
+      display: inline-block;
+      background: var(--color-accent-orange);
+      color: #FFFFFF;
+      padding: 1px 4px;
+      font-size: 10px;
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+
+    .empty-state {
+      border: 1px solid var(--color-border);
+      padding: 8px;
+      background: #FFF8E0;
+      margin-top: 6px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .right-ad {
+      border: 1px solid var(--color-border);
+      padding: 5px 6px;
+      background: #FFF8E0;
+      margin-bottom: 6px;
+    }
+
+    .right-ad img {
+      width: 206px;
+      height: 105px;
+      object-fit: contain;
+      border: 1px solid var(--color-border);
+      background: #FFFFFF;
+      margin-bottom: 4px;
+    }
+
+    .news-item {
+      border-bottom: 1px solid var(--color-border);
+      padding: 5px 6px;
+    }
+
+    .news-item .date {
+      color: var(--color-text-small);
+      font-size: 10px;
+      margin-right: 4px;
+    }
+
+    .thumb-news {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      column-gap: 6px;
+      border-bottom: 1px solid var(--color-border);
+      padding: 5px 6px;
+    }
+
+    .thumb-news img {
+      width: 60px;
+      height: 45px;
+      object-fit: contain;
+      border: 1px solid var(--color-border);
+      background: #FFFFFF;
+    }
+
+    .recent-list a {
+      display: block;
+      border-bottom: 1px solid var(--color-border);
+      padding: 4px 0;
+    }
+
+    .footer {
+      border-top: 1px solid var(--color-border);
+      margin-top: 6px;
+      padding: 6px;
+      display: grid;
+      grid-template-columns: 220px 1fr 220px;
+      column-gap: 10px;
+      font-size: 11px;
+    }
+
+    .footer strong {
+      font-size: 16px;
+      color: var(--color-red);
+    }
+
+    .floating-wa {
+      position: fixed;
+      right: 12px;
+      bottom: 12px;
+      background: var(--color-red);
+      color: #FFFFFF;
+      border: 1px solid var(--color-red);
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: bold;
+      z-index: 20;
+    }
+
+    .floating-wa:hover {
+      color: #FFFFFF;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="utility-bar">
+      <span>Butuh bantuan pilih produk? Hubungi kami.</span>
+      <a href="#">Login</a>
+      <a href="#">Daftar</a>
+      <a href="#recent">Terakhir Dilihat</a>
+      <a href="#footer">Bantuan</a>
+    </div>
+
+    <header class="search-header">
+      <div class="logo">
+        Sumber Jaya
+        <small>Katalog komputer, laptop, printer, komponen, aksesoris</small>
+      </div>
+
+      <input id="topSearch" class="top-search" type="text" placeholder="Cari produk, tipe laptop, printer, monitor, atau aksesoris..." />
+
+      <button id="topSearchBtn" class="primary">Cari</button>
+      <button id="stockBtn">Tanya Stok</button>
+
+      <div class="header-ad">
+        <strong>Promo Hari Ini</strong>
+        Paket kantor, laptop harian, dan aksesoris siap tanya stok.
+      </div>
+    </header>
+
+    <nav class="nav-row">
+      <a href="#produk">Katalog</a>
+      <a href="#produk">Laptop</a>
+      <a href="#produk">PC &amp; Komponen</a>
+      <a href="#produk">Printer</a>
+      <a href="#produk">Aksesoris</a>
+      <a href="#promo">Promo</a>
+    </nav>
+
+    <div class="hot-keywords">
+      <div class="label">Kata kunci</div>
+      <div class="links">
+        <a href="#" data-keyword="laptop">Laptop</a>
+        <a href="#" data-keyword="gaming">Gaming</a>
+        <a href="#" data-keyword="printer">Printer</a>
+        <a href="#" data-keyword="monitor">Monitor</a>
+        <a href="#" data-keyword="SSD">SSD</a>
+        <a href="#" data-keyword="keyboard">Keyboard</a>
+        <a href="#" data-keyword="RTX">RTX</a>
+        <a href="#" data-keyword="router">Router</a>
+      </div>
+    </div>
+
+    <div class="ticker-row">
+      <a href="#rekomendasi">Rekomendasi sesuai kebutuhan</a>
+      |
+      <a href="#compare">Bandingkan produk</a>
+      |
+      <a href="#promo">Produk promo dan paket hemat</a>
+      |
+      <span>Harga dan stok dapat berubah sewaktu-waktu.</span>
+    </div>
+
+    <main class="main">
+      <aside class="left-col">
+        <div class="category-cell">
+          <div class="cat-head"><span class="icon">💻</span>Laptop</div>
+          <div class="cat-links">
+            <a href="#" data-category-link="Laptop">Laptop kerja</a>
+            <a href="#" data-category-link="Laptop">Laptop sekolah</a>
+            <a href="#" data-category-link="Laptop">Laptop kuliah</a>
+            <a href="#" data-category-link="Laptop Gaming">Laptop gaming</a>
+          </div>
+        </div>
+
+        <div class="category-cell">
+          <div class="cat-head"><span class="icon">🖥</span>PC &amp; Komponen</div>
+          <div class="cat-links">
+            <a href="#" data-category-link="Komponen">Motherboard</a>
+            <a href="#" data-category-link="Komponen">VGA</a>
+            <a href="#" data-category-link="Komponen">RAM</a>
+            <a href="#" data-category-link="Komponen">Storage</a>
+            <a href="#" data-category-link="Komponen">Casing PC</a>
+          </div>
+        </div>
+
+        <div class="category-cell">
+          <div class="cat-head"><span class="icon">🖨</span>Printer</div>
+          <div class="cat-links">
+            <a href="#" data-category-link="Printer">Ink tank</a>
+            <a href="#" data-category-link="Printer">Print scan copy</a>
+            <a href="#" data-category-link="Printer">Wireless printer</a>
+            <a href="#" data-category-link="Printer">Kantor &amp; sekolah</a>
+          </div>
+        </div>
+
+        <div class="category-cell">
+          <div class="cat-head"><span class="icon">⌨</span>Aksesoris</div>
+          <div class="cat-links">
+            <a href="#" data-category-link="Aksesoris">Keyboard</a>
+            <a href="#" data-category-link="Aksesoris">Mouse</a>
+            <a href="#" data-category-link="Aksesoris">Headset</a>
+            <a href="#" data-category-link="Aksesoris">Kabel</a>
+          </div>
+        </div>
+
+        <div class="category-cell">
+          <div class="cat-head"><span class="icon">📺</span>Monitor</div>
+          <div class="cat-links">
+            <a href="#" data-category-link="Monitor">Monitor kerja</a>
+            <a href="#" data-category-link="Monitor">Monitor gaming</a>
+            <a href="#" data-category-link="Monitor">FHD</a>
+            <a href="#" data-category-link="Monitor">Refresh rate tinggi</a>
+          </div>
+        </div>
+
+        <div class="category-cell">
+          <div class="cat-head"><span class="icon">📡</span>Networking</div>
+          <div class="cat-links">
+            <a href="#" data-category-link="Networking">Router</a>
+            <a href="#" data-category-link="Networking">Wi-Fi rumah</a>
+            <a href="#" data-category-link="Networking">Kantor kecil</a>
+            <a href="#" data-category-link="Networking">Dual-band</a>
+          </div>
+        </div>
+
+        <div class="category-cell">
+          <div class="cat-head"><span class="icon">🏷</span>Promo</div>
+          <div class="cat-links">
+            <a href="#promo">Paket kerja hemat</a>
+            <a href="#promo">Paket kantor lengkap</a>
+            <a href="#promo">Paket gaming starter</a>
+            <a href="#promo">Stok terbatas</a>
+          </div>
+        </div>
+      </aside>
+
+      <section class="center-col">
+        <section class="catalog-hero">
+          <h1>Katalog Produk Sumber Jaya</h1>
+          <p>Temukan berbagai kebutuhan komputer, laptop, printer, monitor, komponen PC, dan aksesoris dalam satu katalog yang mudah dicari.</p>
+          <p>Cari produk berdasarkan kategori, kebutuhan, atau budget. Setiap produk dilengkapi informasi singkat agar lebih mudah dibandingkan sebelum bertanya stok.</p>
+
+          <div class="hero-search-row">
+            <input id="heroSearch" type="text" placeholder="Cari laptop, keyboard, SSD, printer, monitor..." />
+            <button id="heroSearchBtn" class="primary">Cari</button>
+            <button id="promoBtn">Produk Promo</button>
+          </div>
+
+          <div class="small-note">Harga dan stok dapat berubah sewaktu-waktu. Silakan hubungi toko untuk konfirmasi terbaru.</div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">Pilih kategori produk</div>
+          <div class="section-body">
+            <p class="meta">Mulai dari kategori yang paling sesuai dengan kebutuhanmu.</p>
+          </div>
+          <div class="shortcut-grid">
+            <div class="shortcut"><strong>Laptop</strong><span>Untuk kerja, sekolah, kuliah, dan kebutuhan harian.</span></div>
+            <div class="shortcut"><strong>Laptop Gaming</strong><span>Untuk gaming, editing, dan performa berat.</span></div>
+            <div class="shortcut"><strong>PC Rakitan</strong><span>Untuk setup kantor, desain, gaming, atau usaha.</span></div>
+            <div class="shortcut"><strong>Monitor</strong><span>Untuk kerja, belajar, gaming, dan setup kantor.</span></div>
+            <div class="shortcut"><strong>Printer</strong><span>Untuk dokumen rumah, kantor, dan sekolah.</span></div>
+            <div class="shortcut"><strong>Keyboard &amp; Mouse</strong><span>Perlengkapan kerja, gaming, dan meja kecil.</span></div>
+            <div class="shortcut"><strong>Storage</strong><span>SSD dan penyimpanan untuk upgrade perangkat.</span></div>
+            <div class="shortcut"><strong>RAM</strong><span>Upgrade multitasking dan performa aplikasi.</span></div>
+            <div class="shortcut"><strong>Motherboard</strong><span>Komponen utama untuk rakitan PC.</span></div>
+            <div class="shortcut"><strong>VGA</strong><span>Kartu grafis untuk gaming, desain, dan editing.</span></div>
+            <div class="shortcut"><strong>Router</strong><span>Wi-Fi rumah, kantor kecil, dan jaringan harian.</span></div>
+            <div class="shortcut"><strong>Aksesoris</strong><span>Keyboard, mouse, headset, kabel, dan perlengkapan tambahan.</span></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">Filter produk</div>
+          <div class="section-body">
+            <table class="filter-table">
+              <tr>
+                <th>Kategori</th>
+                <td id="categoryFilters"></td>
+              </tr>
+              <tr>
+                <th>Kebutuhan</th>
+                <td id="needFilters"></td>
+              </tr>
+              <tr>
+                <th>Harga</th>
+                <td id="priceFilters"></td>
+              </tr>
+            </table>
+
+            <div class="sort-row">
+              Urutkan:
+              <select id="sortSelect">
+                <option value="newest">Terbaru</option>
+                <option value="low">Harga terendah</option>
+                <option value="high">Harga tertinggi</option>
+                <option value="popular">Paling dicari</option>
+                <option value="promo">Promo</option>
+              </select>
+              <button id="resetBtn">Reset Filter</button>
+            </div>
+
+            <div class="small-note">Gunakan filter untuk menemukan produk yang paling sesuai dengan kebutuhan dan budget.</div>
+          </div>
+        </section>
+
+        <section id="produk" class="section">
+          <div class="section-title">Semua Produk</div>
+          <div class="section-body">
+            <p class="meta">Lihat pilihan produk yang tersedia di katalog Sumber Jaya.</p>
+          </div>
+
+          <div id="productGrid" class="product-grid"></div>
+
+          <div id="emptySearch" class="empty-state hidden">
+            <strong>Produk tidak ditemukan</strong>
+            <p>Kami belum menemukan produk yang sesuai dengan pencarianmu. Coba gunakan kata kunci lain atau pilih kategori berbeda.</p>
+            <p class="meta">Coba cari “laptop”, “printer”, “SSD”, “keyboard”, atau “monitor”.</p>
+            <button id="emptyReset" class="primary">Reset Filter</button>
+            <button id="emptyContact">Hubungi Toko</button>
+          </div>
+        </section>
+
+        <section id="detail" class="section">
+          <div class="section-title">Detail Produk</div>
+          <div class="section-body" id="detailContent"></div>
+        </section>
+
+        <section id="compare" class="section">
+          <div class="section-title">Bandingkan produk</div>
+          <div class="section-body">
+            <p class="meta">Pilih beberapa produk untuk melihat perbedaan harga, spesifikasi, dan kebutuhan penggunaan.</p>
+            <div id="compareContent" class="empty-state">Belum ada produk yang dipilih untuk dibandingkan.</div>
+            <div style="margin-top:5px;">
+              <button id="clearCompare">Hapus Perbandingan</button>
+              <button id="askCompare" class="primary">Tanya Rekomendasi</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="rekomendasi" class="section">
+          <div class="section-title">Rekomendasi sesuai kebutuhan</div>
+          <div class="section-body">
+            <p class="meta">Pilih produk berdasarkan cara kamu menggunakannya.</p>
+          </div>
+          <div class="recommend-grid">
+            <div class="recommend-card"><strong>Untuk kerja harian</strong>Laptop ringan, monitor nyaman, keyboard wireless, dan mouse yang praktis.</div>
+            <div class="recommend-card"><strong>Untuk sekolah dan kuliah</strong>Laptop terjangkau untuk tugas, browsing, dan kelas online.</div>
+            <div class="recommend-card"><strong>Untuk gaming</strong>Laptop gaming, monitor refresh rate tinggi, mouse gaming, dan headset.</div>
+            <div class="recommend-card"><strong>Untuk kantor</strong>PC desktop, printer, monitor, router, dan perangkat pendukung kerja.</div>
+            <div class="recommend-card"><strong>Untuk upgrade PC</strong>RAM, SSD, VGA, motherboard, power supply, casing, dan cooling fan.</div>
+            <div class="recommend-card"><strong>Untuk usaha kecil</strong>Printer, router, PC kantor, dan aksesoris kerja yang stabil.</div>
+          </div>
+        </section>
+
+        <section id="promo" class="section">
+          <div class="section-title">Produk promo</div>
+          <div class="section-body">
+            <p class="meta">Lihat pilihan produk dengan harga spesial atau paket hemat.</p>
+          </div>
+          <div class="promo-grid">
+            <div class="promo-card">
+              <span class="label">Promo</span>
+              <strong>Paket Kerja Hemat</strong>
+              Laptop, mouse wireless, dan cooling pad.
+              <br /><button data-wa="Paket Kerja Hemat">Lihat Paket</button>
+            </div>
+            <div class="promo-card">
+              <span class="label">Paket Hemat</span>
+              <strong>Paket Kantor Lengkap</strong>
+              PC, monitor, keyboard, mouse, dan printer.
+              <br /><button data-wa="Paket Kantor Lengkap">Tanya Paket</button>
+            </div>
+            <div class="promo-card">
+              <span class="label">Stok Terbatas</span>
+              <strong>Paket Gaming Starter</strong>
+              Laptop gaming, mouse gaming, headset, dan mousepad.
+              <br /><button data-wa="Paket Gaming Starter">Lihat Detail</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="recent" class="section">
+          <div class="section-title">Terakhir dilihat</div>
+          <div class="section-body">
+            <p class="meta">Produk yang baru saja kamu buka akan muncul di sini.</p>
+            <div id="recentList" class="recent-list empty-state">Belum ada produk yang dilihat.</div>
+          </div>
+        </section>
+      </section>
+
+      <aside class="right-col">
+        <div class="right-ad">
+          <img src="https://www.asus.com/websites/ID/aboutasus/A1404/A1404-Web-Banner-1366x840px.jpg" alt="ASUS Vivobook 14 Banner" />
+          <strong>ASUS Vivobook 14 A1404</strong>
+          Laptop harian untuk kerja, kuliah, dan multitasking ringan.
+          <br />
+          <a href="#produk" data-keyword="Vivobook">Lihat katalog laptop</a>
+        </div>
+
+        <section class="section">
+          <div class="section-title">Info katalog</div>
+          <div class="news-item"><span class="date">18/06</span><a href="#produk">Laptop kerja dan kuliah tersedia di katalog.</a></div>
+          <div class="news-item"><span class="date">18/06</span><a href="#promo">Paket hemat kantor dapat ditanyakan langsung.</a></div>
+          <div class="news-item"><span class="date">18/06</span><a href="#compare">Gunakan fitur bandingkan sebelum memilih.</a></div>
+          <div class="news-item"><span class="date">18/06</span><a href="#rekomendasi">Rekomendasi produk berdasarkan kebutuhan umum.</a></div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">Produk disorot</div>
+          <div class="thumb-news">
+            <img src="https://dlcdnwebimgs.asus.com/gain/d7dac694-ccb7-416e-acea-0c776a878760/w800" alt="ASUS Vivobook 14 A1404" />
+            <div><a href="#" data-detail-name="ASUS Vivobook 14 A1404">ASUS Vivobook 14 untuk kerja harian</a><br /><span class="meta">Laptop</span></div>
+          </div>
+          <div class="thumb-news">
+            <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/MTA-138445961/acer_acer_laptop_gaming_nitro_v_15_anv15-51-5115_graphic_nvidia_geforce_rtx_4050_15-6-_fhd_ips_intel_core_i5-13420h_ram_8gb_storage_512gb_ssd_windows_11_full01_f53lpclm.webp" alt="Acer Nitro V 15" />
+            <div><a href="#" data-detail-name="Acer Nitro V 15 ANV15-51-5115">Acer Nitro V 15 RTX 4050</a><br /><span class="meta">Laptop Gaming</span></div>
+          </div>
+          <div class="thumb-news">
+            <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//104/MTA-44719169/samsung_monitor_samsung_odyssey_g3_ls24ag320nexxd__ls24ag320_165hz_1ms_fhd_full01_bhi9vucx.jpg" alt="Samsung Odyssey G3" />
+            <div><a href="#" data-detail-name="Samsung Odyssey G3 24 inch">Samsung Odyssey G3 165Hz</a><br /><span class="meta">Monitor</span></div>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div>
+        <strong>Sumber Jaya</strong>
+        <p>Katalog komputer, laptop, printer, komponen, dan aksesoris.</p>
+      </div>
+
+      <div>
+        <a href="#produk">Semua Produk</a>
+        |
+        <a href="#produk">Laptop</a>
+        |
+        <a href="#produk">Printer</a>
+        |
+        <a href="#produk">Monitor</a>
+        |
+        <a href="#produk">Aksesoris</a>
+        |
+        <a href="#promo">Promo</a>
+        |
+        <a href="#footer">Kontak</a>
+      </div>
+
+      <div class="meta">
+        Harga dan stok dapat berubah sewaktu-waktu. Silakan hubungi toko untuk konfirmasi terbaru.
+      </div>
+    </footer>
+  </div>
+
+  <a id="floatingWa" class="floating-wa" href="#" target="_blank">Tanya Stok</a>
+
+  <script>
+    const WA_NUMBER = "";
+    const defaultWaMessage = "Halo Sumber Jaya, saya ingin bertanya stok produk.";
+
+    const products = [
+      {
+        id: 1,
+        name: "ASUS Vivobook 14 A1404",
+        category: "Laptop",
+        price: 6999000,
+        status: "Tersedia",
+        needs: ["Kerja", "Sekolah", "Harian", "Kantor"],
+        specs: "Intel Core i5, RAM 8GB, SSD 512GB, layar 14 inch FHD",
+        processor: "Intel Core i5 / Core series",
+        ram: "8GB DDR4",
+        storage: "SSD NVMe 512GB",
+        display: "14 inch FHD",
+        cocok: "Pelajar, mahasiswa, pekerja kantor, penggunaan harian",
+        image: "https://dlcdnwebimgs.asus.com/gain/d7dac694-ccb7-416e-acea-0c776a878760/w800",
+        gallery: [
+          "https://dlcdnwebimgs.asus.com/gain/d7dac694-ccb7-416e-acea-0c776a878760/w800",
+          "https://www.asus.com/websites/ID/aboutasus/A1404/A1404-Web-Banner-1366x840px.jpg"
+        ],
+        description: "Laptop ringan untuk kebutuhan kerja, sekolah, kuliah, dan penggunaan harian. Cocok untuk mengetik dokumen, browsing, meeting online, dan multitasking ringan.",
+        popular: 95,
+        promo: false
+      },
+      {
+        id: 2,
+        name: "Acer Nitro V 15 ANV15-51-5115",
+        category: "Laptop Gaming",
+        price: 13999000,
+        status: "Tersedia",
+        needs: ["Gaming", "Desain", "Harian"],
+        specs: "Intel Core i5-13420H, RTX 4050 6GB, RAM 8GB, SSD 512GB",
+        processor: "Intel Core i5-13420H",
+        ram: "8GB DDR5",
+        storage: "SSD 512GB NVMe",
+        display: "15,6 inch FHD IPS 144Hz",
+        cocok: "Gaming, editing, desain, multitasking berat",
+        image: "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/MTA-138445961/acer_acer_laptop_gaming_nitro_v_15_anv15-51-5115_graphic_nvidia_geforce_rtx_4050_15-6-_fhd_ips_intel_core_i5-13420h_ram_8gb_storage_512gb_ssd_windows_11_full01_f53lpclm.webp",
+        gallery: [
+          "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/MTA-138445961/acer_acer_laptop_gaming_nitro_v_15_anv15-51-5115_graphic_nvidia_geforce_rtx_4050_15-6-_fhd_ips_intel_core_i5-13420h_ram_8gb_storage_512gb_ssd_windows_11_full01_f53lpclm.webp",
+          "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//catalog-image/104/MTA-138445961/br-m036969-00039_acer-laptop-nitro-v-15-anv15-51-5115-15-6-i5-13420h-ram-8gb-storage-512gb-rtx-4050-w11_full02-72c3a7c6.jpg",
+          "https://images.acer.com/is/image/acer/acer-laptop-nitro-v15-anv15-52-agw-banner%3ASecondary-Hero-S"
+        ],
+        description: "Laptop gaming 15,6 inch untuk performa berat, gaming, editing, dan multitasking. Dibekali RTX 4050 dan layar refresh rate tinggi.",
+        popular: 99,
+        promo: true
+      },
+      {
+        id: 3,
+        name: "Lenovo LOQ 15IRX9",
+        category: "Laptop Gaming",
+        price: 14999000,
+        status: "Cek Stok",
+        needs: ["Gaming", "Desain"],
+        specs: "Intel Core HX series, RTX 40 Series, layar 15 inch",
+        processor: "Intel Core HX series",
+        ram: "8GB / 16GB",
+        storage: "SSD NVMe 512GB",
+        display: "15 inch FHD",
+        cocok: "Gaming, content creation, editing, performa berat",
+        image: "https://p4-ofp.static.pub//fes/cms/2024/05/20/bck35fhess1td0jtxhbqx1a2s9ofzk318843.png?height=584&width=584",
+        gallery: [
+          "https://p4-ofp.static.pub//fes/cms/2024/05/20/bck35fhess1td0jtxhbqx1a2s9ofzk318843.png?height=584&width=584"
+        ],
+        description: "Laptop gaming Lenovo LOQ untuk gaming, content creation, dan pekerjaan yang membutuhkan performa grafis lebih tinggi.",
+        popular: 87,
+        promo: false
+      },
+      {
+        id: 4,
+        name: "HP Victus 15-fb1887AX",
+        category: "Laptop Gaming",
+        price: 10499000,
+        status: "Tersedia",
+        needs: ["Gaming", "Sekolah", "Desain"],
+        specs: "Ryzen 5 7535HS, RTX 2050 4GB, RAM 8GB, SSD 512GB",
+        processor: "AMD Ryzen 5 7535HS",
+        ram: "8GB",
+        storage: "SSD 512GB",
+        display: "15,6 inch FHD IPS 144Hz",
+        cocok: "Gaming entry, editing ringan, sekolah, kuliah",
+        image: "https://mdp.co.id/_next/image?q=75&url=https%3A%2F%2Fapi.mdp.co.id%2Fupload%2Fpictures%2Fproduct%2FLP01605.jpg&w=256",
+        gallery: [
+          "https://mdp.co.id/_next/image?q=75&url=https%3A%2F%2Fapi.mdp.co.id%2Fupload%2Fpictures%2Fproduct%2FLP01605.jpg&w=256"
+        ],
+        description: "Laptop gaming entry untuk pengguna yang butuh performa lebih dari laptop harian, cocok untuk game ringan-menengah dan tugas kreatif.",
+        popular: 83,
+        promo: true
+      },
+      {
+        id: 5,
+        name: "Samsung Odyssey G3 24 inch",
+        category: "Monitor",
+        price: 1899000,
+        status: "Tersedia",
+        needs: ["Gaming", "Kerja"],
+        specs: "24 inch FHD, 165Hz, 1ms, AMD FreeSync Premium",
+        processor: "-",
+        ram: "-",
+        storage: "-",
+        display: "24 inch FHD 165Hz",
+        cocok: "Gaming kompetitif, setup kerja, layar tambahan",
+        image: "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//104/MTA-44719169/samsung_monitor_samsung_odyssey_g3_ls24ag320nexxd__ls24ag320_165hz_1ms_fhd_full01_bhi9vucx.jpg",
+        gallery: [
+          "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//104/MTA-44719169/samsung_monitor_samsung_odyssey_g3_ls24ag320nexxd__ls24ag320_165hz_1ms_fhd_full01_bhi9vucx.jpg",
+          "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//104/MTA-44719169/samsung_monitor_samsung_odyssey_g3_ls24ag320nexxd__ls24ag320_165hz_1ms_fhd_full02_o5ou995.jpg"
+        ],
+        description: "Monitor gaming 24 inch dengan refresh rate tinggi dan response time cepat untuk pengalaman bermain yang lebih responsif.",
+        popular: 90,
+        promo: false
+      },
+      {
+        id: 6,
+        name: "LG 24MR400-B",
+        category: "Monitor",
+        price: 1299000,
+        status: "Tersedia",
+        needs: ["Kerja", "Sekolah", "Kantor", "Harian"],
+        specs: "23,8 inch FHD IPS, 100Hz, AMD FreeSync",
+        processor: "-",
+        ram: "-",
+        storage: "-",
+        display: "23,8 inch FHD IPS 100Hz",
+        cocok: "Kerja, belajar, setup kantor, layar tambahan",
+        image: "https://mdp.co.id/_next/image?q=75&url=https%3A%2F%2Fapi.mdp.co.id%2Fupload%2Fpictures%2Fproduct%2FMN2025.jpg&w=256",
+        gallery: [
+          "https://mdp.co.id/_next/image?q=75&url=https%3A%2F%2Fapi.mdp.co.id%2Fupload%2Fpictures%2Fproduct%2FMN2025.jpg&w=256"
+        ],
+        description: "Monitor IPS untuk kerja dan belajar dengan tampilan nyaman, cocok sebagai monitor utama atau layar tambahan.",
+        popular: 74,
+        promo: false
+      },
+      {
+        id: 7,
+        name: "AOC 24G4",
+        category: "Monitor",
+        price: 2199000,
+        status: "Cek Stok",
+        needs: ["Gaming", "Desain"],
+        specs: "24 inch FHD IPS, 180Hz, response time cepat",
+        processor: "-",
+        ram: "-",
+        storage: "-",
+        display: "24 inch FHD IPS 180Hz",
+        cocok: "Game kompetitif, setup gaming, editing ringan",
+        image: "https://mdp.co.id/_next/image?q=75&url=https%3A%2F%2Fapi.mdp.co.id%2Fupload%2Fpictures%2Fproduct%2FMN2031.jpg&w=256",
+        gallery: [
+          "https://mdp.co.id/_next/image?q=75&url=https%3A%2F%2Fapi.mdp.co.id%2Fupload%2Fpictures%2Fproduct%2FMN2031.jpg&w=256"
+        ],
+        description: "Monitor gaming 24 inch dengan refresh rate 180Hz untuk game kompetitif dan visual yang lebih responsif.",
+        popular: 81,
+        promo: true
+      },
+      {
+        id: 8,
+        name: "Canon PIXMA G3010",
+        category: "Printer",
+        price: 2499000,
+        status: "Tersedia",
+        needs: ["Sekolah", "Kantor", "Usaha", "Harian"],
+        specs: "Print, scan, copy, wireless, ink tank",
+        processor: "-",
+        ram: "-",
+        storage: "-",
+        display: "-",
+        cocok: "Rumah, sekolah, kantor kecil, dokumen harian",
+        image: "https://id.canon/media/image/2024/08/06/49cc0e5d964046be95cce451e993074a_G3X10_AS_FR_cl_en_110.jpg",
+        gallery: [
+          "https://id.canon/media/image/2024/08/06/49cc0e5d964046be95cce451e993074a_G3X10_AS_FR_cl_en_110.jpg"
+        ],
+        description: "Printer ink tank multifungsi untuk kebutuhan dokumen rumah, sekolah, dan kantor dengan dukungan wireless.",
+        popular: 79,
+        promo: false
+      },
+      {
+        id: 9,
+        name: "Brother DCP-T420W",
+        category: "Printer",
+        price: 2350000,
+        status: "Cek Stok",
+        needs: ["Kantor", "Usaha", "Sekolah"],
+        specs: "Print, scan, copy, Wi-Fi, ink tank all-in-one",
+        processor: "-",
+        ram: "-",
+        storage: "-",
+        display: "-",
+        cocok: "Kantor kecil, usaha, sekolah, dokumen rutin",
+        image: "https://www.brother.ae/-/media/3499c3b5c78249d4ba88d6046c530d9d.jpg?as=0&h=454&hash=E3F3EBEBBE35DE4B6A332B8E732786B3&rev=6310addf2f51447ab6c923e5d70156de&w=454",
+        gallery: [
+          "https://www.brother.ae/-/media/3499c3b5c78249d4ba88d6046c530d9d.jpg?as=0&h=454&hash=E3F3EBEBBE35DE4B6A332B8E732786B3&rev=6310addf2f51447ab6c923e5d70156de&w=454",
+          "https://www.brother.ae/-/media/22291b9afb9340e68dcd8cc91d63be7c.jpg?as=0&h=454&hash=A9863268C98CDE9740144E6DAA3CA6B2&rev=3a4d631d063943a78946b932afe3b042&w=454"
+        ],
+        description: "Printer all-in-one dengan Wi-Fi untuk print, scan, dan copy. Cocok untuk dokumen kantor, sekolah, dan usaha.",
+        popular: 76,
+        promo: false
+      },
+      {
+        id: 10,
+        name: "Logitech MK220 Wireless Keyboard Mouse Combo",
+        category: "Aksesoris",
+        price: 269000,
+        status: "Tersedia",
+        needs: ["Kerja", "Sekolah", "Kantor", "Harian"],
+        specs: "Keyboard dan mouse wireless compact 2.4GHz",
+        processor: "-",
+        ram: "-",
+        storage: "-",
+        display: "-",
+        cocok: "Meja kerja kecil, kantor, sekolah, penggunaan harian",
+        image: "https://resource.logitech.com/w_544%2Ch_466%2Car_7%3A6%2Cc_pad%2Cq_auto%2Cf_auto%2Cdpr_1.0/d_transparent.gif/content/dam/logitech/en/products/combos/mk220/gallery/mk220-gallery-2.png",
+        gallery: [
+          "https://resource.logitech.com/w_544%2Ch_466%2Car_7%3A6%2Cc_pad%2Cq_auto%2Cf_auto%2Cdpr_1.0/d_transparent.gif/content/dam/logitech/en/products/combos/mk220/gallery/mk220-gallery-2.png"
+        ],
+        description: "Keyboard dan mouse wireless compact untuk meja kerja kecil, kantor, dan penggunaan harian yang praktis.",
+        popular: 88,
+        promo: true
+      },
+      {
+        id: 11,
+        name: "ASUS PRIME H610M-K D4",
+        category: "Komponen",
+        price: 1099000,
+        status: "Tersedia",
+        needs: ["Kantor", "Usaha", "Gaming"],
+        specs: "Intel H610, LGA1700, DDR4, micro-ATX, M.2, HDMI",
+        processor: "Socket LGA1700",
+        ram: "DDR4",
+        storage: "M.2 slot, SATA 6Gb/s",
+        display: "HDMI, D-Sub",
+        cocok: "PC kantor, rakitan hemat, upgrade PC",
+        image: "https://dlcdnwebimgs.asus.com/files/media/23a48f07-3639-46dd-b88d-dbf3adc2dd6c/img/spec/spec_pc.png",
+        gallery: [
+          "https://dlcdnwebimgs.asus.com/files/media/23a48f07-3639-46dd-b88d-dbf3adc2dd6c/img/spec/spec_pc.png"
+        ],
+        description: "Motherboard micro-ATX untuk rakitan PC berbasis Intel LGA1700 dengan dukungan DDR4, M.2, dan konektivitas dasar lengkap.",
+        popular: 72,
+        promo: false
+      },
+      {
+        id: 12,
+        name: "ASUS Dual GeForce RTX 4060 White OC",
+        category: "Komponen",
+        price: 5299000,
+        status: "Tersedia",
+        needs: ["Gaming", "Desain"],
+        specs: "RTX 4060 8GB GDDR6, DLSS 3, dual Axial-tech fan",
+        processor: "NVIDIA GeForce RTX 4060",
+        ram: "8GB GDDR6",
+        storage: "-",
+        display: "Output display GPU",
+        cocok: "Gaming 1080p, editing, desain, upgrade PC",
+        image: "https://dlcdnwebimgs.asus.com/gain/3d192535-e2f5-43a2-8724-9b5103e2615a/w800",
+        gallery: [
+          "https://dlcdnwebimgs.asus.com/gain/3d192535-e2f5-43a2-8724-9b5103e2615a/w800",
+          "https://dlcdnwebimgs.asus.com/files/media/aa831684-ceba-412f-b267-fadd67a84343/v1/img/kv.png"
+        ],
+        description: "Kartu grafis RTX 4060 8GB untuk gaming, editing, dan upgrade PC dengan desain dual fan warna putih.",
+        popular: 92,
+        promo: true
+      },
+      {
+        id: 13,
+        name: "TP-Link Archer C54",
+        category: "Networking",
+        price: 299000,
+        status: "Tersedia",
+        needs: ["Kantor", "Usaha", "Harian"],
+        specs: "Router AC1200 dual-band, 4 antena, MU-MIMO, Beamforming",
+        processor: "-",
+        ram: "-",
+        storage: "-",
+        display: "-",
+        cocok: "Wi-Fi rumah, kantor kecil, jaringan harian",
+        image: "https://www.mdp.co.id/_next/image?q=75&url=https%3A%2F%2Fapi.mdp.co.id%2Fupload%2Fpictures%2Fproduct%2FLN3781.jpg&w=256",
+        gallery: [
+          "https://www.mdp.co.id/_next/image?q=75&url=https%3A%2F%2Fapi.mdp.co.id%2Fupload%2Fpictures%2Fproduct%2FLN3781.jpg&w=256"
+        ],
+        description: "Router AC1200 dual-band untuk rumah dan kantor kecil, mendukung koneksi 5GHz dan 2.4GHz dengan 4 antena.",
+        popular: 70,
+        promo: false
+      }
+    ];
+
+    const filters = {
+      category: "Semua",
+      need: "Semua",
+      price: "Semua",
+      query: ""
+    };
+
+    const compareIds = new Set();
+    const recentIds = [];
+
+    const categoryOptions = ["Semua", "Laptop", "PC", "Monitor", "Printer", "Komponen", "Aksesoris", "Networking", "Promo"];
+    const needOptions = ["Semua", "Kerja", "Sekolah", "Gaming", "Desain", "Kantor", "Usaha", "Harian"];
+    const priceOptions = [
+      { label: "Semua", value: "Semua" },
+      { label: "Di bawah Rp 1 juta", value: "lt1" },
+      { label: "Rp 1–3 juta", value: "1-3" },
+      { label: "Rp 3–7 juta", value: "3-7" },
+      { label: "Rp 7–12 juta", value: "7-12" },
+      { label: "Di atas Rp 12 juta", value: "gt12" }
+    ];
+
+    const productGrid = document.getElementById("productGrid");
+    const emptySearch = document.getElementById("emptySearch");
+    const detailContent = document.getElementById("detailContent");
+    const compareContent = document.getElementById("compareContent");
+    const recentList = document.getElementById("recentList");
+    const topSearch = document.getElementById("topSearch");
+    const heroSearch = document.getElementById("heroSearch");
+    const sortSelect = document.getElementById("sortSelect");
+
+    function rupiah(value) {
+      return "Rp " + value.toLocaleString("id-ID");
+    }
+
+    function waLink(message) {
+      return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(message);
+    }
+
+    function priceMatch(product, range) {
+      if (range === "Semua") return true;
+      if (range === "lt1") return product.price < 1000000;
+      if (range === "1-3") return product.price >= 1000000 && product.price <= 3000000;
+      if (range === "3-7") return product.price > 3000000 && product.price <= 7000000;
+      if (range === "7-12") return product.price > 7000000 && product.price <= 12000000;
+      if (range === "gt12") return product.price > 12000000;
+      return true;
+    }
+
+    function categoryMatch(product, category) {
+      if (category === "Semua") return true;
+      if (category === "Promo") return product.promo;
+      if (category === "PC") return product.category === "Komponen";
+      if (category === "Laptop") return product.category.indexOf("Laptop") >= 0;
+      return product.category === category;
+    }
+
+    function productMatches(product) {
+      const q = filters.query.trim().toLowerCase();
+
+      const queryMatch = !q ||
+        product.name.toLowerCase().includes(q) ||
+        product.category.toLowerCase().includes(q) ||
+        product.specs.toLowerCase().includes(q) ||
+        product.cocok.toLowerCase().includes(q);
+
+      const needMatch = filters.need === "Semua" || product.needs.includes(filters.need);
+
+      return queryMatch &&
+        categoryMatch(product, filters.category) &&
+        needMatch &&
+        priceMatch(product, filters.price);
+    }
+
+    function sortedProducts(list) {
+      const sort = sortSelect.value;
+      const copy = list.slice();
+
+      if (sort === "low") copy.sort((a, b) => a.price - b.price);
+      if (sort === "high") copy.sort((a, b) => b.price - a.price);
+      if (sort === "popular") copy.sort((a, b) => b.popular - a.popular);
+      if (sort === "promo") copy.sort((a, b) => Number(b.promo) - Number(a.promo));
+      if (sort === "newest") copy.sort((a, b) => b.id - a.id);
+
+      return copy;
+    }
+
+    function renderFilterButtons() {
+      document.getElementById("categoryFilters").innerHTML = categoryOptions.map(item => {
+        return '<button class="filter-btn ' + (filters.category === item ? 'active' : '') + '" data-filter-type="category" data-filter-value="' + item + '">' + item + '</button>';
+      }).join("");
+
+      document.getElementById("needFilters").innerHTML = needOptions.map(item => {
+        return '<button class="filter-btn ' + (filters.need === item ? 'active' : '') + '" data-filter-type="need" data-filter-value="' + item + '">' + item + '</button>';
+      }).join("");
+
+      document.getElementById("priceFilters").innerHTML = priceOptions.map(item => {
+        return '<button class="filter-btn ' + (filters.price === item.value ? 'active' : '') + '" data-filter-type="price" data-filter-value="' + item.value + '">' + item.label + '</button>';
+      }).join("");
+
+      document.querySelectorAll("[data-filter-type]").forEach(button => {
+        button.onclick = () => {
+          const type = button.getAttribute("data-filter-type");
+          const value = button.getAttribute("data-filter-value");
+          filters[type] = value;
+          renderFilterButtons();
+          renderProducts();
+        };
+      });
+    }
+
+    function renderProducts() {
+      const list = sortedProducts(products.filter(productMatches));
+
+      if (list.length === 0) {
+        productGrid.innerHTML = "";
+        emptySearch.classList.remove("hidden");
+        return;
+      }
+
+      emptySearch.classList.add("hidden");
+
+      productGrid.innerHTML = list.map(product => {
+        const checked = compareIds.has(product.id) ? "checked" : "";
+        const actionLabel = product.status === "Tersedia" ? "Lihat Detail" : "Tanya Produk";
+
+        return `
+          <article class="product-card">
+            <div class="product-inner">
+              <img class="product-img" src="${product.image}" alt="${product.name}" />
+              <div>
+                <a href="#" class="product-title" data-detail-id="${product.id}">${product.name}</a>
+                <div class="meta">Kategori: ${product.category}</div>
+                <div class="price">Mulai dari ${rupiah(product.price)}</div>
+                <div class="meta">Spek singkat: ${product.specs}</div>
+                <span class="status">${product.status}</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="primary" data-detail-id="${product.id}">${actionLabel}</button>
+              <button data-wa-product="${product.id}">Tanya Stok</button>
+              <label class="meta">
+                <input type="checkbox" data-compare-id="${product.id}" ${checked} />
+                Bandingkan
+              </label>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      document.querySelectorAll("[data-detail-id]").forEach(el => {
+        el.onclick = event => {
+          event.preventDefault();
+          const id = Number(el.getAttribute("data-detail-id"));
+          showDetail(id);
+        };
+      });
+
+      document.querySelectorAll("[data-wa-product]").forEach(el => {
+        el.onclick = () => {
+          const id = Number(el.getAttribute("data-wa-product"));
+          const product = products.find(item => item.id === id);
+          window.open(waLink("Halo Sumber Jaya, saya ingin bertanya stok produk " + product.name + "."), "_blank");
+        };
+      });
+
+      document.querySelectorAll("[data-compare-id]").forEach(el => {
+        el.onchange = () => {
+          const id = Number(el.getAttribute("data-compare-id"));
+          if (el.checked) {
+            compareIds.add(id);
+          } else {
+            compareIds.delete(id);
+          }
+          renderCompare();
+        };
+      });
+    }
+
+    function showDetail(id) {
+      const product = products.find(item => item.id === id);
+      if (!product) return;
+
+      addRecent(id);
+
+      const thumbs = product.gallery.map(src => {
+        return '<img src="' + src + '" alt="' + product.name + '" data-gallery-src="' + src + '" />';
+      }).join("");
+
+      detailContent.innerHTML = `
+        <div class="detail-layout">
+          <div>
+            <img id="detailMainImg" class="detail-main-img" src="${product.image}" alt="${product.name}" />
+            <div class="thumb-row">${thumbs}</div>
+          </div>
+          <div>
+            <h2 style="margin:0 0 4px;font-size:16px;color:#000000;">${product.name}</h2>
+            <div class="price">Mulai dari ${rupiah(product.price)}</div>
+            <div class="meta">Status stok: ${product.status} | Kategori: ${product.category}</div>
+            <p>${product.description}</p>
+
+            <table class="spec-table">
+              <tr><th>Processor</th><td>${product.processor}</td></tr>
+              <tr><th>RAM</th><td>${product.ram}</td></tr>
+              <tr><th>Storage</th><td>${product.storage}</td></tr>
+              <tr><th>Layar</th><td>${product.display}</td></tr>
+              <tr><th>Sistem Operasi</th><td>${product.category.indexOf("Laptop") >= 0 ? "Windows 11" : "-"}</td></tr>
+              <tr><th>Garansi</th><td>Resmi / mengikuti produk</td></tr>
+              <tr><th>Cocok untuk</th><td>${product.cocok}</td></tr>
+            </table>
+
+            <div class="card-actions">
+              <button class="primary" data-detail-wa="${product.id}">Tanya Stok Produk</button>
+              <button data-detail-wa="${product.id}">Kirim ke WhatsApp</button>
+              <button id="detailCompareBtn">Bandingkan Produk</button>
+            </div>
+
+            <div class="small-note">Harga dan stok dapat berubah. Silakan hubungi toko untuk konfirmasi terbaru.</div>
+          </div>
+        </div>
+      `;
+
+      document.querySelectorAll("[data-gallery-src]").forEach(img => {
+        img.onclick = () => {
+          document.getElementById("detailMainImg").src = img.getAttribute("data-gallery-src");
+        };
+      });
+
+      document.querySelectorAll("[data-detail-wa]").forEach(btn => {
+        btn.onclick = () => {
+          window.open(waLink("Halo Sumber Jaya, saya ingin bertanya stok produk " + product.name + "."), "_blank");
+        };
+      });
+
+      document.getElementById("detailCompareBtn").onclick = () => {
+        compareIds.add(product.id);
+        renderProducts();
+        renderCompare();
+        location.hash = "compare";
+      };
+
+      location.hash = "detail";
+    }
+
+    function renderCompare() {
+      const selected = products.filter(product => compareIds.has(product.id));
+
+      if (selected.length === 0) {
+        compareContent.className = "empty-state";
+        compareContent.innerHTML = "Belum ada produk yang dipilih untuk dibandingkan.";
+        return;
+      }
+
+      compareContent.className = "";
+      compareContent.innerHTML = `
+        <table class="compare-table">
+          <tr>
+            <th>Field</th>
+            ${selected.map(product => '<th>' + product.name + '</th>').join("")}
+          </tr>
+          <tr><th>Harga</th>${selected.map(product => '<td>' + rupiah(product.price) + '</td>').join("")}</tr>
+          <tr><th>Processor</th>${selected.map(product => '<td>' + product.processor + '</td>').join("")}</tr>
+          <tr><th>RAM</th>${selected.map(product => '<td>' + product.ram + '</td>').join("")}</tr>
+          <tr><th>Storage</th>${selected.map(product => '<td>' + product.storage + '</td>').join("")}</tr>
+          <tr><th>Ukuran layar</th>${selected.map(product => '<td>' + product.display + '</td>').join("")}</tr>
+          <tr><th>Kategori</th>${selected.map(product => '<td>' + product.category + '</td>').join("")}</tr>
+          <tr><th>Cocok untuk</th>${selected.map(product => '<td>' + product.cocok + '</td>').join("")}</tr>
+          <tr><th>Status stok</th>${selected.map(product => '<td>' + product.status + '</td>').join("")}</tr>
+        </table>
+      `;
+    }
+
+    function addRecent(id) {
+      const index = recentIds.indexOf(id);
+      if (index >= 0) recentIds.splice(index, 1);
+      recentIds.unshift(id);
+      if (recentIds.length > 5) recentIds.pop();
+      renderRecent();
+    }
+
+    function renderRecent() {
+      if (recentIds.length === 0) {
+        recentList.className = "recent-list empty-state";
+        recentList.innerHTML = "Belum ada produk yang dilihat.";
+        return;
+      }
+
+      recentList.className = "recent-list";
+      recentList.innerHTML = recentIds.map(id => {
+        const product = products.find(item => item.id === id);
+        return '<a href="#" data-detail-id="' + product.id + '">' + product.name + ' — ' + rupiah(product.price) + '</a>';
+      }).join("");
+
+      recentList.querySelectorAll("[data-detail-id]").forEach(el => {
+        el.onclick = event => {
+          event.preventDefault();
+          showDetail(Number(el.getAttribute("data-detail-id")));
+        };
+      });
+    }
+
+    function runSearch(value) {
+      filters.query = value;
+      topSearch.value = value;
+      heroSearch.value = value;
+      renderProducts();
+      location.hash = "produk";
+    }
+
+    document.getElementById("topSearchBtn").onclick = () => runSearch(topSearch.value);
+    document.getElementById("heroSearchBtn").onclick = () => runSearch(heroSearch.value);
+
+    topSearch.onkeydown = event => {
+      if (event.key === "Enter") runSearch(topSearch.value);
+    };
+
+    heroSearch.onkeydown = event => {
+      if (event.key === "Enter") runSearch(heroSearch.value);
+    };
+
+    topSearch.oninput = () => {
+      filters.query = topSearch.value;
+      heroSearch.value = topSearch.value;
+      renderProducts();
+    };
+
+    heroSearch.oninput = () => {
+      filters.query = heroSearch.value;
+      topSearch.value = heroSearch.value;
+      renderProducts();
+    };
+
+    sortSelect.onchange = renderProducts;
+
+    document.getElementById("resetBtn").onclick = resetFilters;
+    document.getElementById("emptyReset").onclick = resetFilters;
+
+    function resetFilters() {
+      filters.category = "Semua";
+      filters.need = "Semua";
+      filters.price = "Semua";
+      filters.query = "";
+      topSearch.value = "";
+      heroSearch.value = "";
+      sortSelect.value = "newest";
+      renderFilterButtons();
+      renderProducts();
+    }
+
+    document.getElementById("stockBtn").onclick = () => {
+      window.open(waLink(defaultWaMessage), "_blank");
+    };
+
+    document.getElementById("emptyContact").onclick = () => {
+      window.open(waLink("Halo, saya ingin mencari produk komputer sesuai kebutuhan dan budget saya."), "_blank");
+    };
+
+    document.getElementById("promoBtn").onclick = () => {
+      filters.category = "Promo";
+      renderFilterButtons();
+      renderProducts();
+      location.hash = "produk";
+    };
+
+    document.getElementById("clearCompare").onclick = () => {
+      compareIds.clear();
+      renderProducts();
+      renderCompare();
+    };
+
+    document.getElementById("askCompare").onclick = () => {
+      const selected = products.filter(product => compareIds.has(product.id)).map(product => product.name).join(", ");
+      const message = selected
+        ? "Halo Sumber Jaya, saya ingin minta rekomendasi dari produk berikut: " + selected + "."
+        : "Halo Sumber Jaya, saya ingin minta rekomendasi produk komputer sesuai kebutuhan dan budget saya.";
+      window.open(waLink(message), "_blank");
+    };
+
+    document.getElementById("floatingWa").href = waLink(defaultWaMessage);
+
+    document.querySelectorAll("[data-keyword]").forEach(link => {
+      link.onclick = event => {
+        event.preventDefault();
+        runSearch(link.getAttribute("data-keyword"));
+      };
+    });
+
+    document.querySelectorAll("[data-category-link]").forEach(link => {
+      link.onclick = event => {
+        event.preventDefault();
+        filters.category = link.getAttribute("data-category-link");
+        renderFilterButtons();
+        renderProducts();
+        location.hash = "produk";
+      };
+    });
+
+    document.querySelectorAll("[data-detail-name]").forEach(link => {
+      link.onclick = event => {
+        event.preventDefault();
+        const name = link.getAttribute("data-detail-name");
+        const product = products.find(item => item.name === name);
+        if (product) showDetail(product.id);
+      };
+    });
+
+    document.querySelectorAll("[data-wa]").forEach(button => {
+      button.onclick = () => {
+        window.open(waLink("Halo Sumber Jaya, saya ingin bertanya tentang " + button.getAttribute("data-wa") + "."), "_blank");
+      };
+    });
+
+    renderFilterButtons();
+    renderProducts();
+    showDetail(1);
+    renderCompare();
+    renderRecent();
+  </script>
+</body>
+</html>
