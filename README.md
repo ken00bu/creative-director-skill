@@ -1,11 +1,12 @@
 # creative-director
 
-<img
-  width="800"
-  height="450"
-  alt="creative-director demo"
-  src="./assets/demo.gif"
-/>
+<div align="center">
+<img width="800" height="450" alt="creative-director demo" src="./assets/demo.gif" />
+<br /><br />
+<img width="800" height="450" alt="image" src="https://github.com/user-attachments/assets/3a01b680-51df-46e5-a057-4a0297ca1d47" />
+<br /><br />
+<img width="800" height="450" alt="image" src="https://github.com/user-attachments/assets/ad9088f0-dfb9-4b12-a3cb-52e9920bd4e3" />
+</div>
 
 
 A Claude Skill that turns a visual brief — a reference image, a mood, a brand —
@@ -212,14 +213,16 @@ when running the skill.
 
 ---
 
-## Examples
+## More Examples
 
 All examples below: brief generated with **Claude Sonnet 4.6**, HTML built by **GPT-5.5**.
-
-<img width="1906" height="956" alt="image" src="https://github.com/user-attachments/assets/3a01b680-51df-46e5-a057-4a0297ca1d47" />
-<img width="1906" height="956" alt="image" src="https://github.com/user-attachments/assets/ad9088f0-dfb9-4b12-a3cb-52e9920bd4e3" />
-<img width="1906" height="956" alt="image" src="https://github.com/user-attachments/assets/db1f5148-f38d-4119-af50-0e13a9f878f7" />
-<img width="1906" height="956" alt="image" src="https://github.com/user-attachments/assets/b88328c3-e588-42fc-951e-da692a163c1d" />
+<div align="center">
+<img width="800" height="450" alt="image" src="https://github.com/user-attachments/assets/db1f5148-f38d-4119-af50-0e13a9f878f7" />
+<br /><br />
+<img width="800" height="450" alt="image" src="https://github.com/user-attachments/assets/875c9b40-f212-4e48-85f1-d2b74250d9f5" />
+<br /><br />
+<img width="800" height="450" alt="image" src="https://github.com/user-attachments/assets/32fde6c5-4584-4343-8eba-cdb78cef61db" />
+</div>
 
 
 
