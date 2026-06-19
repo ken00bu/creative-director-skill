@@ -1,5 +1,6 @@
 # creative-director
 
+<img width="1906" height="956" alt="image" src="https://github.com/user-attachments/assets/7b82fa26-9622-40f3-9c2c-314b8655908e" />
 A Claude Skill that turns a visual brief — a reference image, a mood, a brand —
 into a **creative brief for AI** tailored to that exact brief. It does not
 generate the final landing page, portfolio, or interactive artifact itself.
@@ -211,22 +212,12 @@ when running the skill.
 
 All examples below: brief generated with **Claude Sonnet 4.6**, HTML built by **GPT-5.5**.
 
-| Preview | Brief | Description |
-|---------|-------|-------------|
-| *(add your example here)* | *(link to generated skill)* | *(short description)* |
-| *(add your example here)* | *(link to generated skill)* | *(short description)* |
-| *(add your example here)* | *(link to generated skill)* | *(short description)* |
+<img width="1906" height="956" alt="image" src="https://github.com/user-attachments/assets/3a01b680-51df-46e5-a057-4a0297ca1d47" />
+<img width="1906" height="956" alt="image" src="https://github.com/user-attachments/assets/ad9088f0-dfb9-4b12-a3cb-52e9920bd4e3" />
+<img width="1906" height="956" alt="image" src="https://github.com/user-attachments/assets/db1f5148-f38d-4119-af50-0e13a9f878f7" />
+<img width="1906" height="956" alt="image" src="https://github.com/user-attachments/assets/b88328c3-e588-42fc-951e-da692a163c1d" />
 
----
 
-## A note on reference images
-
-If you hand this skill a screenshot of an existing live site, it can only
-read what's visible in that single static image. It will infer plausible
-interactive behavior from visual cues — a motion-trail cursor, a running
-clock, a scrubber control — but it cannot confirm those are the *actual*
-behaviors of the original site. Good output from this skill says so explicitly
-rather than presenting inferred behavior as observed fact.
 
 ---
 
