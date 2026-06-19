@@ -1,6 +1,6 @@
-# creative-director
 
 <div align="center">
+# creative-director
 <img width="800" height="450" alt="creative-director demo" src="./assets/demo.gif" />
 <br /><br />
 <img width="800" height="450" alt="image" src="https://github.com/user-attachments/assets/3a01b680-51df-46e5-a057-4a0297ca1d47" />
